@@ -26,7 +26,7 @@ ip.dst == 183.81.159.136
 ```
 >>> send(x, count=10)
 ```
-![Captured packets](wireshark_capture.png)
+![Captured packets](./src/wireshark_capture.png)
 
 ### You can add more information to the packet to mimic a real-world data.
 
@@ -35,7 +35,7 @@ ip.dst == 183.81.159.136
 ### The dataset <b>DDoS SDN dataset</b> is downloaded from [kaggle](https://www.kaggle.com/datasets/aikenkazin/ddos-sdn-dataset).
 ### The dataset contains a total of 1,04,345 training examples.
 ### contains 3 categorial and 19 numerical features, a total of 22 features.
-![Dataset preview](dataset_preview.jpg)
+![Dataset preview](./src/dataset_preview.jpg)
 
 ### contains a label column: ```0``` refers benign packet and ```1``` refers malignant IP packet.
 
