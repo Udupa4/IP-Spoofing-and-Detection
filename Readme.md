@@ -33,36 +33,50 @@ ip.dst == 183.81.159.136
 
 ### You can add more information to the packet to mimic a real-world data.
 
-## 2. Detection using Logistic Regression model
+## 2. Detection using both Logistic Regression and Neural Network
 
-## Dataset:
+### 2.1 Dataset:
 
-### The dataset <b>DDoS SDN dataset</b> is downloaded from [kaggle](https://www.kaggle.com/datasets/aikenkazin/ddos-sdn-dataset).
+#### The dataset <b>DDoS SDN dataset</b> is downloaded from [kaggle](https://www.kaggle.com/datasets/aikenkazin/ddos-sdn-dataset).
 
-### The dataset contains a total of 1,04,345 training examples.
+#### The dataset contains a total of 1,04,345 training examples.
 
-### contains 3 categorial and 19 numerical features, a total of 22 features.
+#### contains 3 categorial and 19 numerical features, a total of 22 features.
 
 ![Dataset preview](./src/dataset_preview.jpg)
 
-### contains a label column: `0` refers benign packet and `1` refers malignant IP packet.
+#### contains a label column: `0` refers benign packet and `1` refers malignant IP packet.
 
-## Model training:
+#### The data is pre-processed and split into training (0.80) and testing (0.20) using pandas and sklearn library respectively.
 
-### Install Required libraries using pip
+### 2.2 Model training:
+
+### Logistic Regression Model:
+#### Install Required libraries using pip
 
 ```
 pip install numpy pandas sklearn
 ```
 
-### The data is pre-processed and split into training (0.75) and testing (0.25) using pandas and sklearn library respectively.
+#### The `logisticRegression` class in `sklearn.linear_model` is used to create an instance of the model. This model is trained with `max_iters`(total no. of iterations to be run to train the model) is set to 10000.
 
-### The `logisticRegression` class in `sklearn.linear_model` is used to create an instance of the model. This model is trained with `max_iters`(total no. of iterations to be run to train the model) is set to 10000.
+### Neural Networks Model:
+#### Install the [tensorflow](https://www.tensorflow.org/api_docs/python/tf) library using below command
 
-## Model Evaluation:
+```
+pip install tensorflow
+```
 
-### An accuracy of 70.16 % is achieved by using Logistic Regression. The accuracy can be further increased by the following:
+#### Model contains two hidden layers each having 10 units and a third output layer having one unit.
 
-- Using more no. of training examples
-- Using more complex algorithms like Decision Trees, Random Forests, XGBoost etc.
-- [Feature Engineering](https://towardsdatascience.com/what-is-feature-engineering-importance-tools-and-techniques-for-machine-learning-2080b0269f10), such that important features like src, dst, Protocol, pktrate, pktperflow etc. have more weights.
+#### "Adam" and "BinaryCrossentropy" is used as optimizer and loss function respectively.
+
+#### 15 Epochs with a default batch_size of 32 is set while training the model.
+
+### 2.3 Model Evaluation:
+
+#### An accuracy of 70.16 % is achieved by using Logistic Regression.
+
+#### An accuracy of 98.96 % is achieved by using NN model.
+
+#### Both the jupyter source files are uploaded in the src directory.
